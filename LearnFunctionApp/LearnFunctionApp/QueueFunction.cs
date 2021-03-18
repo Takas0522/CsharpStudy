@@ -12,7 +12,7 @@ namespace LearnFunctionApp
         {
             log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
             // 5回施行失敗したら[Queue名]-posion Queueストレージにストアされるテスト
-            throw new Exception("Appliction Error");
+            //throw new Exception("Appliction Error");
         }
     }
 }
