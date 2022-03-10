@@ -7,6 +7,7 @@ using Microsoft.Identity.Web;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace LearnAzureIdentity
 {
@@ -48,10 +49,18 @@ namespace LearnAzureIdentity
 
             SettingsInit();
 
-            var cred = GenTokenCredential(CertType.InteractiveBrowserCredential);
+            var cred = GenTokenCredential(CertType.OnBehalfOfCredential);
             var client = new SecretClient(new Uri(KeyVaultUrl), cred);
             var d = client.GetSecret("test-hoge");
             var val = d.Value;
+        }
+
+        private static string GetAccessToken()
+        {
+            IPublicClientApplication app = PublicClientApplicationBuilder.Create(ClientId)
+                .WithAuthority(AzureCloudInstance.AzurePublic, TenantId).WithRedirectUri("http://localhost").Build();
+            var res = app.AcquireTokenInteractive(new List<string> { "api://63569bf4-d27a-4c67-9401-98646550b3a1/access" }).ExecuteAsync().Result;
+            return res.AccessToken;
         }
 
         private static void SettingsInit()
@@ -70,6 +79,11 @@ namespace LearnAzureIdentity
 
         private static TokenCredential GenTokenCredential(CertType certType)
         {
+            var accessToken = "";
+            if (certType == CertType.OnBehalfOfCredential)
+            {
+                accessToken = GetAccessToken();
+            }
             switch (certType)
             {
                 case CertType.ClientCertificateCredential:
@@ -123,12 +137,10 @@ namespace LearnAzureIdentity
                     // ManagedIdentity
                     return new ManagedIdentityCredential();
 
-
-                // 以下次回
-
                 case CertType.OnBehalfOfCredential:
                     // OnBeHalfOfFlow。アクセストークンとシークレット
-                    return new OnBehalfOfCredential("","","","");
+                    return new OnBehalfOfCredential(TenantId, ClientId, ClientSecret, accessToken);
+
                 case CertType.SharedTokenCacheCredential:
                     return new SharedTokenCacheCredential();
                 case CertType.UsernamePasswordCredential:
