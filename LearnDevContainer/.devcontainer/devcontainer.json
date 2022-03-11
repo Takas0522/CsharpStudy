@@ -26,7 +26,8 @@
 		"Angular.ng-template",
 		"mhutchie.git-graph",
 		"PKief.material-icon-theme",
-		"msjsdiag.debugger-for-edge"
+		"msjsdiag.debugger-for-edge",
+		"vscjava.vscode-java-debug"
 	],
 
 	// Use 'postCreateCommand' to run commands after the container is created.

@@ -58,5 +58,27 @@
                 "cwd": "${workspaceFolder}/front"
             },
         },
+        {
+            "type": "func",
+            "command": "host start",
+            "problemMatcher": "$func-java-watch",
+            "isBackground": true,
+            "options": {
+                "cwd": "${workspaceFolder}/SampleFunctions/target/azure-functions/samplefunctions-20220310172806038"
+            },
+            "dependsOn": "package (functions)"
+        },
+        {
+            "label": "package (functions)",
+            "command": "mvn clean package",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/SampleFunctions"
+            }
+        }
     ]
 }

@@ -37,6 +37,14 @@
             "url": "http://localhost:4200/",
             "webRoot": "${workspaceFolder}/front"
         },
+        {
+            "name": "functions",
+            "type": "java",
+            "request": "attach",
+            "hostName": "127.0.0.1",
+            "port": 5005,
+            "preLaunchTask": "func: host start"
+        }
     ],
     "compounds": [
         {
