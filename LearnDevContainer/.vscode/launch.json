@@ -48,9 +48,9 @@
     ],
     "compounds": [
         {
-            "name": "front+webapi",
+            "name": "front+webapi+functions",
             "configurations": [
-                "api","front"
+                "functions","api","front"
             ],
             "stopAll": true
         }
