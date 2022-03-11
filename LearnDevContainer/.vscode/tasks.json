@@ -55,7 +55,7 @@
                 }
             },
             "options": {
-                "cwd": "front"
+                "cwd": "${workspaceFolder}/front"
             },
         },
     ]
