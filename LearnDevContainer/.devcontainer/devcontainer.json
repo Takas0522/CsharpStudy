@@ -25,7 +25,8 @@
 		"ms-azuretools.vscode-azurestorage",
 		"Angular.ng-template",
 		"mhutchie.git-graph",
-		"PKief.material-icon-theme"
+		"PKief.material-icon-theme",
+		"msjsdiag.debugger-for-edge"
 	],
 
 	// Use 'postCreateCommand' to run commands after the container is created.

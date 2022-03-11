@@ -35,3 +35,6 @@ RUN apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates 
     curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 RUN apt-get install -y nodejs
 RUN npm install @angular/cli -g
+RUN dotnet dev-certs https
+RUN -E dotnet dev-certs https -ep /usr/local/share/ca-certificates/aspnet/https.crt --format PEM
+RUN update-ca-certificates
