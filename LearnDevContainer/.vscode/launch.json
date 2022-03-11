@@ -36,6 +36,15 @@
             "preLaunchTask": "npm: start",
             "url": "http://localhost:4200/",
             "webRoot": "${workspaceFolder}/front"
+        },
+    ],
+    "compounds": [
+        {
+            "name": "front+webapi",
+            "configurations": [
+                "api","front"
+            ],
+            "stopAll": true
         }
     ]
 }
