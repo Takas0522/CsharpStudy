@@ -1,10 +1,9 @@
 {
 	"name": "Azure Functions & Java 8",
-	"dockerFile": "Dockerfile",
-	"forwardPorts": [ 7071 ],
-
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
 	// Set *default* container specific settings.json values on container create.
-	"settings": { 
+	"settings": {
 		"java.home": "/usr/lib/jvm/zulu-11-azure-amd64",
 		"java.configuration.runtimes": [
 			{
@@ -27,7 +26,8 @@
 		"mhutchie.git-graph",
 		"PKief.material-icon-theme",
 		"msjsdiag.debugger-for-edge",
-		"vscjava.vscode-java-debug"
+		"vscjava.vscode-java-debug",
+		"ms-mssql.mssql"
 	],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
