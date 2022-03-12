@@ -1,7 +1,8 @@
 {
-	"name": "Azure Functions & Java 8",
+	"name": "Custom",
 	"dockerComposeFile": "docker-compose.yml",
-	"service": "app",
+	"service": "workspace",
+	"workspaceFolder": "/workspace",
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
 		"java.home": "/usr/lib/jvm/zulu-11-azure-amd64",

@@ -1,7 +1,22 @@
 version: '3'
 
 services:
-  app:
+  workspace:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./workspace/Dockerfile
+    volumes:
+      - ..:/workspace:cached
+
+    command: sleep infinity
+    network_mode: service:storage
+
+  storage:
+    container_name: azurite
+    image: mcr.microsoft.com/azure-storage/azurite:latest
+    restart: unless-stopped
+    volumes:
+      - storage-data:/data
+
+volumes:
+  storage-data:
